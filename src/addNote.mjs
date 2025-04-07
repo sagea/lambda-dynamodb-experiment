@@ -17,27 +17,31 @@ const tableName = "notes";
 
 export const handler = async (event) => {
   console.log('hello')
-  try {
-    const item = await dynamo.send(
-      new PutCommand({
-        TableName: tableName,
-        Item: {
-          id: randomUUID(),
-          title: "My First Note",
-          content: "This is the content of my first note.",
-        },
-      })
-    );
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Hello, world!" }),
+  };
+//   try {
+//     const item = await dynamo.send(
+//       new PutCommand({
+//         TableName: tableName,
+//         Item: {
+//           id: randomUUID(),
+//           title: "My First Note",
+//           content: "This is the content of my first note.",
+//         },
+//       })
+//     );
     
-    return {
-      statusCode: 200,
-      body: JSON.stringify(item),
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ message: "Internal Server Error" }),
-    };
-  }
+//     return {
+//       statusCode: 200,
+//       body: JSON.stringify(item),
+//     };
+//   } catch (error) {
+//     console.error(error);
+//     return {
+//       statusCode: 500,
+//       body: JSON.stringify({ message: "Internal Server Error" }),
+//     };
+//   }
 };
