@@ -15,7 +15,8 @@ const dynamo = DynamoDBDocumentClient.from(client);
 
 const tableName = "notes";
 
-export const handler = async (event) => {
+export const handler = async (event, context) => {
+  console.log(context)
   console.log('hello')
   return {
     statusCode: 200,
