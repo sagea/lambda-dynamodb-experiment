@@ -17,6 +17,7 @@ const tableName = "notes";
 
 export const handler = async (event, context) => {
   console.log(context)
+  console.log(event)
   console.log('hello')
   return {
     statusCode: 200,
