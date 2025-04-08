@@ -10,21 +10,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install dependencies
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Install dependencies
       - run: npm install
       - run: npm run build
-
       - name: Install zip tool
         uses: montudor/action-zip@v1
-
       - name: Create Zip file for Lambda function
         run: zip -r code.zip .
         working-directory: ./dist
-
       - name: AWS CLI v2
         uses: imehedi/actions-awscli-v2@latest
         with:
