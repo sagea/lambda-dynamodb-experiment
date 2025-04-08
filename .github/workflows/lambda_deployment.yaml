@@ -14,8 +14,9 @@ jobs:
         with:
           node-version: 22
       - name: Install dependencies
-      - run: npm install
-      - run: npm run build
+        run: npm install
+      - name: Build
+        run: npm run build
       - name: Install zip tool
         uses: montudor/action-zip@v1
       - name: Create Zip file for Lambda function
