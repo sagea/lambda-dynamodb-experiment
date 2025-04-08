@@ -7,7 +7,6 @@ import {
   DeleteCommand,
 } from "@aws-sdk/lib-dynamodb";
 import { Context, S3Event } from "aws-lambda";
-import { helper } from "./helper";
 
 
 const client = new DynamoDBClient({});
@@ -17,7 +16,6 @@ const dynamo = DynamoDBDocumentClient.from(client);
 const tableName = "notes";
 
 export const handler = async (event: S3Event, context: Context) => {
-  helper()
   return {
     statusCode: 200,
     body: JSON.stringify({ message: "Hello, world!" }),
