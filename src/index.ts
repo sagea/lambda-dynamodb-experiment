@@ -6,8 +6,9 @@ import {
   GetCommand,
   DeleteCommand,
 } from "@aws-sdk/lib-dynamodb";
+import { Context, S3Event } from "aws-lambda";
+import { helper } from "./helper";
 
-import { randomUUID } from 'node:crypto'
 
 const client = new DynamoDBClient({});
 
@@ -15,10 +16,8 @@ const dynamo = DynamoDBDocumentClient.from(client);
 
 const tableName = "notes";
 
-export const handler = async (event, context) => {
-  console.log(context)
-  console.log(event)
-  console.log('hello')
+export const handler = async (event: S3Event, context: Context) => {
+  helper()
   return {
     statusCode: 200,
     body: JSON.stringify({ message: "Hello, world!" }),
