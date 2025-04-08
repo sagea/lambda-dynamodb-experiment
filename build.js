@@ -3,14 +3,14 @@ const esbuild = require('esbuild');
 esbuild.build({
     entryPoints: ['src/index.ts'],
     outfile: 'dist/index.mjs',
-    bundle: false,
+    bundle: true,
     format: 'esm',
     target: 'node20',
     platform: 'node',
     sourcemap: false,
     minify: false,
     packages: 'external',
-    // external: ['node_modules'],
+    external: ['node_modules'],
     define: {
         'process.env.NODE_ENV': JSON.stringify('production'),
     },
