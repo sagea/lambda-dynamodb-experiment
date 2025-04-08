@@ -6,8 +6,8 @@ import {
   GetCommand,
   DeleteCommand,
 } from "@aws-sdk/lib-dynamodb";
-import { Context, S3Event } from "aws-lambda";
-
+import { Context, LambdaFunctionURLEvent, S3Event } from "aws-lambda";
+import { getNoteCount } from "./api";
 
 const client = new DynamoDBClient({});
 
@@ -15,9 +15,10 @@ const dynamo = DynamoDBDocumentClient.from(client);
 
 const tableName = "notes";
 
-export const handler = async (event: S3Event, context: Context) => {
+export const handler = async (event: LambdaFunctionURLEvent, context: Context) => {
   console.log(event)
   console.log(context)
+  console.log(await getNoteCount())
   return {
     statusCode: 200,
     body: JSON.stringify({ message: "Hello, world!" }),
